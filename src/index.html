@@ -1,12 +1,48 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title>Data Lovers</title>
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body>
-    <div id="root"></div>
-    <script src="main.js" type="module"></script>
-  </body>
+
+<head>
+  <meta charset="utf-8">
+  <title>Ghiblies/DataLovers</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <nav>
+    <span style="color: rgba(250, 240, 238, 1); font-family: suplexmentary_comic_nc; font-size: xx-large;" margin="30px" >Ghiblies.com</span>
+    <div class="cont">
+      <label">Buscar</label>
+        <input type="search" placeholder="Película, personaje, año, etc.">
+    </div>
+  </nav>
+
+  <main>
+    <select name="selFilter" id="byfilter">
+      <option value="filter" aria-placeholder="Filtrar">Filtrar</option>      
+      <option value="director">Por Director</option>
+      <option value="producer">Por Productor</option>
+      <option value="year">Por Año</option>
+    </select>
+    <select name="selFilter2" id="byDirector" style="display: none;">
+      <option value="Hayao Miyazaki">Hayao Miyazaki</option>
+      <option value="Isao Takahata">Isao Takahata</option>
+      <option value="Yoshifumi Kondo">Yoshifumi Kondo</option>
+      <option value="Hiroyuki Morita">Hiroyuki Morita</option>
+      <option value="Goro Miyazaki">Goro Miyazaki</option>
+      <option value="Hiromasa Yonebagashi">Hiromasa Yonebagashi</option>
+    </select>
+    <select name="selOrder" id="orderBy" style="float:right">
+      <option value="order">Ordenar por:</option>
+      <option value="alphabet" id="alphabet">Orden Alfabético</option>
+      <option value="year" id="year">Año de Lanzamiento</option>
+      <option value="preference" id="score">Mejor Calificación</option>
+    </select>
+
+    <div id="recover" class="card"></div>
+      
+  </main>
+  <div id="root"></div>
+  <script src="main.js" type="module"></script>
+</body>
+
 </html>
