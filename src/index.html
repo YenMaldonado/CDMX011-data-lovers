@@ -17,20 +17,18 @@
   </nav>
 
   <main>
-    <select name="selFilter" id="byfilter">
-      <option value="filter" aria-placeholder="Filtrar">Filtrar</option>      
+    <select name="selFilter" id="typeFilter">
+      <option value="filter">Filtrar</option>      
       <option value="director">Por Director</option>
       <option value="producer">Por Productor</option>
       <option value="year">Por Año</option>
     </select>
-    <select name="selFilter2" id="byDirector" style="display: none;">
-      <option value="Hayao Miyazaki">Hayao Miyazaki</option>
-      <option value="Isao Takahata">Isao Takahata</option>
-      <option value="Yoshifumi Kondo">Yoshifumi Kondo</option>
-      <option value="Hiroyuki Morita">Hiroyuki Morita</option>
-      <option value="Goro Miyazaki">Goro Miyazaki</option>
-      <option value="Hiromasa Yonebagashi">Hiromasa Yonebagashi</option>
-    </select>
+
+    <div id="select2">
+      <select id="byFilter"></select>
+    </div>
+    <select id="select3"></select>
+
     <select name="selOrder" id="orderBy" style="float:right">
       <option value="order">Ordenar por:</option>
       <option value="alphabet" id="alphabet">Orden Alfabético</option>
@@ -39,10 +37,10 @@
     </select>
 
     <div id="recover" class="card"></div>
-      
+
   </main>
   <div id="root"></div>
-  <script src="main.js" type="module"></script>
+  <script async src="main.js" type="module"></script>
 </body>
 
 </html>
