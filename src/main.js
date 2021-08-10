@@ -2,10 +2,6 @@ import { example } from './data.js';
 
 import data from './data/ghibli/ghibli.js';
 
-let elementSelect = document.createElement("select");
-elementSelect.setAttribute("id","byFilter");
-elementSelect.setAttribute("onchange", "changeSelect(this.value)");
-
 window.addEventListener("load", function(e) {
     let some = document.getElementById("byFilter").addEventListener("click", (e)=>{
         console.log("example.changeSelect");
@@ -65,14 +61,14 @@ window.addEventListener("load", function(e) {
 
     //Función de filtrado desde select filtrar por:
 
-    /*function filterCards(showFilter) {
+    function filterCards(showFilter) {
         showOptions.innerHTML = "";
         showFilter.forEach(viewOptions => {
             let select = document.createElement("select");
             select.innerHTML = optionFilter(viewOptions);
             showOptions.appendChild(select);
         });
-    } */
+    } 
 
     function optionFilter(cardsFilter) {
         let printFilter = `<img src="${cardsFilter.poster}" height= "200px"; width= "150px;"/>
@@ -82,8 +78,14 @@ window.addEventListener("load", function(e) {
 
     document.querySelector('#typeFilter').addEventListener('change', (e) => {
 
-        document.getElementById("select2").removeChild(document.getElementById("byFilter"));
-        let selection = `<select id="byFilter" onchange="changeSelect(this.value)" ></select>;`; 
+        let containerOptions = document.querySelector("#select2");
+        containerOptions = containerOptions.removeChild(document.querySelector("#byFilter"));
+        console.log(containerOptions);
+        let elementSelect = document.createElement("select");
+        elementSelect.setAttribute("id","byFilter");
+        elementSelect.setAttribute("onchange", "changeSelect(this.value)");
+
+        //let selection = `<select id="byFilter" onchange="changeSelect(this.value)" ></select>;`; 
         let selectionFilter = document.createElement("option");
         
         switch (e.target.value) {
