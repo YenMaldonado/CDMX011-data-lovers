@@ -3,9 +3,7 @@ import { example } from './data.js';
 import data from './data/ghibli/ghibli.js';
 
 window.addEventListener("load", function(e) {
-    let some = document.getElementById("byFilter").addEventListener("click", (e)=>{
-        console.log("example.changeSelect");
-    });
+    //let some = document.getElementById("byFilter").addEventListener("click", (e)=>{ });
 
     //Imprimir data en html
     const showData = document.getElementById("recover");
@@ -15,7 +13,6 @@ window.addEventListener("load", function(e) {
     //filterCards(data.films);
 
     //funcion de Ordenamiento
-    //let titles = "";
     function showCards(infoCards) {
         showData.innerHTML = "";
         infoCards.forEach(viewData => {
@@ -26,8 +23,10 @@ window.addEventListener("load", function(e) {
     }
 
     function recoverData(cardsHome) {
-        let printData = `<img src="${cardsHome.poster}" height= "200px"; width= "150px;"/>
-    <h7>${cardsHome.title}</h7>`
+        let printData = `<div class="row"> <div class="cards"> <img src="${cardsHome.poster}" height= "240px"; width= "180px;"/>
+                <h7>${cardsHome.title}</h7>
+            </div>
+        </div>`
         return printData;
     }
 
@@ -70,11 +69,12 @@ window.addEventListener("load", function(e) {
         });
     } 
 
-    function optionFilter(cardsFilter) {
+    /*function optionFilter(cardsFilter) {
         let printFilter = `<img src="${cardsFilter.poster}" height= "200px"; width= "150px;"/>
-    <h7>${cardsFilter.title}</h7>`
+        <h7>${cardsFilter.title}</h7>
+        <p>${cardsFilter.description}</p>`
         console.log(optionFilter);
-    }
+    }*/
 
     document.querySelector('#typeFilter').addEventListener('change', (e) => {
 

@@ -4,12 +4,15 @@
 <head>
   <meta charset="utf-8">
   <title>Ghiblies/DataLovers</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css"  />
 </head>
 
 <body>
   <nav>
-    <span style="color: rgba(250, 240, 238, 1); font-family: suplexmentary_comic_nc; font-size: xx-large;" margin="30px" >Ghiblies.com</span>
+    <div>
+      <h1> Ghiblies.com</h1>
+    </div>
+
     <div class="cont">
       <label">Buscar</label>
         <input type="search" placeholder="Película, personaje, año, etc.">
@@ -17,28 +20,32 @@
   </nav>
 
   <main>
-    <select name="selFilter" id="typeFilter">
-      <option value="filter">Filtrar</option>      
-      <option value="director">Por Director</option>
-      <option value="producer">Por Productor</option>
-      <option value="year">Por Año</option>
-    </select>
+    <div class="positionLeft">
+      <select class="selectFilter" name="selFilter" id="typeFilter">
+        <option value="filter">Filtrar</option>
+        <option value="director">Por Director</option>
+        <option value="producer">Por Productor</option>
+        <option value="year">Por Año</option>
+      </select>
+    
+      <div class="option_filter" id="select2">
+        <select id="byFilter" style="display: none;"></select>
+      </div>
+  </div>
 
-    <div id="select2">
-      <select id="byFilter"></select>
+    <div div class="positionRight">
+      <select class="selectOrder" name="selOrder" id="orderBy">
+        <option value="order">Ordenar por:</option>
+        <option value="alphabet" id="alphabet">Orden Alfabético</option>
+        <option value="year" id="year">Año de Lanzamiento</option>
+        <option value="preference" id="score">Mejor Calificación</option>
+      </select>
     </div>
-    <!--<select id="select3"></select>-->
-
-    <select name="selOrder" id="orderBy" style="float:right">
-      <option value="order">Ordenar por:</option>
-      <option value="alphabet" id="alphabet">Orden Alfabético</option>
-      <option value="year" id="year">Año de Lanzamiento</option>
-      <option value="preference" id="score">Mejor Calificación</option>
-    </select>
-
-    <div id="recover" class="card"></div>
-
   </main>
+  <div class="container">
+    <div id="recover" class="card"></div>
+  </div>
+
   <div id="root"></div>
   <script async src="main.js" type="module"></script>
 </body>

@@ -1,15 +1,14 @@
-// estas funciones son de ejemplo
+//estas funciones son de ejemplo
 
-/*export const example = () => {
+export const example = () => {
   return 'example';
 };
 
-
 export const anotherExample = () => {
   return 'OMG';
-};*/
+};
 
-export const example = function changeSelect(e) {
+/*export const changeSelect = (e) => {
  
    let arrFilter;
  
@@ -44,4 +43,4 @@ export const example = function changeSelect(e) {
           break;
    } return 'example';
    
- }
+ }*/
