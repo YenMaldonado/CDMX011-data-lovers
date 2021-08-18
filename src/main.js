@@ -1,200 +1,83 @@
-import { example } from './data.js';
+import moduleData from './data.js';
 
 import data from './data/ghibli/ghibli.js';
 
-window.addEventListener("load", function(e) {
-    //let some = document.getElementById("byFilter").addEventListener("click", (e)=>{ });
+
+window.addEventListener("load", function (e) {
 
     //Imprimir data en html
     const showData = document.getElementById("recover");
     const showOptions = document.getElementById("byFilter");
-    //const showSelect = document.getElementById("filter2");
+    let showFilter = document.getElementsByClassName("filtered");
+    let printData = "";
+    let printFilter ="";
     showCards(data.films);
-    //filterCards(data.films);
 
+    document.querySelector('#orderBy').addEventListener('change',(event) => {
+       event.target.value;
+       let printOrder = moduleData.orderCards(event.target.value, data);
+       showCards(printOrder);
+    });
+
+    //Función de filtrado
+    document.querySelector("#director").addEventListener('change', (event) => {
+        console.log(event.target.value);
+        let printFilter = moduleData.selectFilter(event.target.value, data, "director");
+        showCards(printFilter);
+    }); 
+    document.querySelector("#producer").addEventListener('change', (event) => {
+        console.log(event.target.value);
+        let printFilter = moduleData.selectFilter(event.target.value, data, "producer");
+        showCards(printFilter);
+    }); 
+    
     //funcion de Ordenamiento
     function showCards(infoCards) {
         showData.innerHTML = "";
         infoCards.forEach(viewData => {
             let card = document.createElement("card");
-            card.innerHTML = recoverData(viewData);
+            card.innerHTML = recoverData(viewData, "cards");
             showData.appendChild(card);
         });
     }
+    let elemCards = document.querySelector(".cards");
+    if (elemCards !== null);
+     
+    function recoverData(cardDetails, templateType) {
+        if (templateType === "cards") {
+            printData = `
+            <div class="row"> 
+                 <div class="cards" id="${cardDetails.id}"> 
+                    <img src="${cardDetails.poster}" height= "220px"; width= "160px;"/>
+                    <h7>${cardDetails.title}</h7>  
+                    <!-- <p>Release Date: ${cardDetails.release_date}</p>
+                    <p>Score: ${cardDetails.rt_score}</p> -->         
+                </div>
+            </div>`;
 
-    function recoverData(cardsHome) {
-        let printData = `<div class="row"> <div class="cards"> <img src="${cardsHome.poster}" height= "240px"; width= "180px;"/>
-                <h7>${cardsHome.title}</h7>
-            </div>
-        </div>`
+        } else {
+            printData = `
+            <div class="details">
+                <img src="${cardDetails.poster}"/>
+                <p>${cardDetails.title}</p>
+                <p>Año de Lanzamiento: ${cardDetails.release_date}</p>
+                <p>Calificación: ${cardDetails.rt_score}</p>
+                <p>${cardDetails.description}</p>
+            </div>`;  
+        }
         return printData;
     }
 
-    document.querySelector('#orderBy').addEventListener('change', (select) => {
-        let arrOrder;
-        switch (select.target.value) {
-            case "alphabet":
-                arrOrder = data.films.sort((a, b) => {
-                    if (a.title < b.title) {
-                        return -1
-                    }
-                    if (a.title > b.title) {
-                        return 1
-                    }
-                    return 0
-                });
-                break;
-            case "year":
-                arrOrder = data.films.sort((a, b) => {
-                    return (a.release_date - b.release_date);
-                });
-                break;
-            case "preference":
-                arrOrder = data.films.sort((a, b) => {
-                    return (b.rt_score - a.rt_score);
-                });
-                break;
-        }
-        showCards(arrOrder);
-    });
+    let selectFilm = document.querySelectorAll(".cards");
 
-    //Función de filtrado desde select filtrar por:
-
-    function filterCards(showFilter) {
-        showOptions.innerHTML = "";
-        showFilter.forEach(viewOptions => {
-            let select = document.createElement("select");
-            select.innerHTML = optionFilter(viewOptions);
-            showOptions.appendChild(select);
-        });
-    } 
-
-    /*function optionFilter(cardsFilter) {
-        let printFilter = `<img src="${cardsFilter.poster}" height= "200px"; width= "150px;"/>
-        <h7>${cardsFilter.title}</h7>
-        <p>${cardsFilter.description}</p>`
-        console.log(optionFilter);
-    }*/
-
-    document.querySelector('#typeFilter').addEventListener('change', (e) => {
-
-        let containerOptions = document.querySelector("#select2");
-        containerOptions = containerOptions.removeChild(document.querySelector("#byFilter"));
-        console.log(containerOptions);
-        let elementSelect = document.createElement("select");
-        elementSelect.setAttribute("id","byFilter");
-        elementSelect.setAttribute("onchange", "changeSelect(this.value)");
-
-        //let selection = `<select id="byFilter" onchange="changeSelect(this.value)" ></select>;`; 
-        let selectionFilter = document.createElement("option");
-        
-        switch (e.target.value) {
-            case "director": 
-
-                selectionFilter = document.createElement("option");
-                selectionFilter.text = "Hayao Miyazaki";
-                selectionFilter.value ="Hayao Miyazaki";
-                elementSelect.add(selectionFilter);
-
-                selectionFilter = document.createElement("option");
-                selectionFilter.text = "Isao Takahata";
-                selectionFilter.value = "Isao Takahata";
-                elementSelect.add(selectionFilter);
-
-                selectionFilter = document.createElement("option");
-                selectionFilter.text = "Yoshifumi Kondo";
-                selectionFilter.value = "Yoshifumi Kondo";
-                elementSelect.add(selectionFilter);
-
-                selectionFilter = document.createElement("option");
-                selectionFilter.text = "Hiroyuki Morita";
-                selectionFilter.value = "Hiroyuki Morita";
-                elementSelect.add(selectionFilter);
-
-                selectionFilter = document.createElement("option");
-                selectionFilter.text = "Goro Miyazaki";
-                selectionFilter.value = "Goro Miyazaki";
-                elementSelect.add(selectionFilter);
-
-                selectionFilter = document.createElement("option");
-                selectionFilter.text = " Hiromasa Yonebagashi";
-                selectionFilter.value = " Hiromasa Yonebagashi";
-                elementSelect.add(selectionFilter);
-
-                document.getElementById("select2").appendChild(elementSelect);
-                break;
-
-            case "producer":
-
-                selectionFilter = document.createElement("option");
-                selectionFilter.text = "Isao Takahata";
-                selectionFilter.value ="Isao Takahata";
-                elementSelect.add(selectionFilter);
-
-                selectionFilter = document.createElement("option");
-                selectionFilter.text = "Hayao Miyazaki";
-                selectionFilter.value ="Hayao Miyazaki";
-                elementSelect.add(selectionFilter);
-
-                selectionFilter = document.createElement("option");
-                selectionFilter.text = "Toru Hara";
-                selectionFilter.value ="Toru Hara";
-                elementSelect.add(selectionFilter);
-
-                selectionFilter = document.createElement("option");
-                selectionFilter.text = "Toshio Suziki ";
-                selectionFilter.value ="Toshio Suziki ";
-                elementSelect.add(selectionFilter);
-
-                selectionFilter = document.createElement("option");
-                selectionFilter.text = "Yoshiaki Nishimura ";
-                selectionFilter.value ="Yoshiaki Nishimura ";
-                elementSelect.add(selectionFilter);
-
-                document.getElementById("select2").appendChild(elementSelect);
-                break;
-
-            case "year":
-                selectionFilter = document.createElement("option");
-                selectionFilter.text = "1986-1990";
-                selectionFilter.value ="1986-1990";
-                elementSelect.add(selectionFilter);
-
-                selectionFilter = document.createElement("option");
-                selectionFilter.text = "1991-1995";
-                selectionFilter.value ="1991-1995";
-                elementSelect.add(selectionFilter);
-
-                selectionFilter = document.createElement("option");
-                selectionFilter.text = "1996-2000";
-                selectionFilter.value ="1996-2000";
-                elementSelect.add(selectionFilter);
-
-                selectionFilter = document.createElement("option");
-                selectionFilter.text = "2001-2005";
-                selectionFilter.value ="2001-2005";
-                elementSelect.add(selectionFilter);
-
-                selectionFilter = document.createElement("option");
-                selectionFilter.text = "2006-2010";
-                selectionFilter.value ="2006-2010";
-                elementSelect.add(selectionFilter);
-
-                selectionFilter = document.createElement("option");
-                selectionFilter.text = "2011-2014";
-                selectionFilter.value ="2011-2014";
-                elementSelect.add(selectionFilter);
-
-                document.getElementById("select2").appendChild(elementSelect);
-                break;
-        }
-    
-    },true);
-});
-document.querySelector('#typeFilter').addEventListener('change', (e) => {
-    const select = document.getElementById("select3");
-    const anios = data.films.release_date;
-    console.log(anios);
-});
-
-
+    for (let i=0; i < selectFilm.length; i++){
+        selectFilm[i].addEventListener("click", function (){
+            let idData = selectFilm[i].getAttribute("id");
+            let findMovie = data.films.find((movie) => {
+                //console.log(movie); 
+                return movie.id === idData;              
+            }); 
+            console.log(findMovie);
+        });       
+    }; 
+});    

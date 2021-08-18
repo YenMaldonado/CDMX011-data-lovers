@@ -13,7 +13,7 @@ nav{
 }
 
 h1{
-    margin: 20, 20;
+    margin-left: 20px;
     float: left;
     font-family: "Yatra One", italic;
     font-kerning: auto;
@@ -22,14 +22,14 @@ h1{
 }
 
 div > h7{
-    font-family: "Yatra One";
+    font-family: "Yatra One", bold;
     font-size: 14;
-    text-align: justify;
+    text-align: center;
     color: rgba(106, 105, 145, 1);
 }
 
 .cont{
-    margin:0, 20 ;
+    margin:10, 20 ;
     height:100%;
     padding-top:0px;
     float:right;
@@ -41,6 +41,7 @@ div > h7{
 
 input[type="search"]{
     width:170px;
+    margin-right: 20px;
     margin:25px;
     padding:10px 16px;
     border-radius:10px;
@@ -55,28 +56,33 @@ input[type="search"]:focus{
 }
 
 main{
-    margin: 20px;
+    position: relative;
+    margin: 10px, 10px;
     display: flex;
     width: 100%;
     height: 25px;
+    display: -webkit-inline-flex;
+    flex-direction: row;
+    justify-content:space-around;
+    flex-flow: wrap;
 }
 
 .row{
-    margin: 10px;
+    position: relative;
     display: -webkit-inline-flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: space-between;
     flex-flow: wrap;
 }
 
 .cards{
-    justify-content: space-around;
+    justify-content: space-between 2px;
     margin: 20px;
-    height: 290px;
-    width: 180px;
+    height: 270px;
+    width: 160px;
     background-color: rgba(188, 209, 232, 1);
     border: 1.5px;
-    border-radius: 5px; 
+    border-radius: 5px, 5px; 
     transition: .3s;
     text-align: center;
     flex-flow: wrap;

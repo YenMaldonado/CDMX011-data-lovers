@@ -2,9 +2,10 @@
 <html>
 
 <head>
-  <meta charset="utf-8">
+  <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Ghiblies/DataLovers</title>
-  <link rel="stylesheet" href="style.css"  />
+  <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
@@ -14,36 +15,61 @@
     </div>
 
     <div class="cont">
-      <label">Buscar</label>
-        <input type="search" placeholder="Película, personaje, año, etc.">
+      <label">Search</label>
+        <input type="search" placeholder="Title, people, year...">
     </div>
   </nav>
 
   <main>
-    <div class="positionLeft">
-      <select class="selectFilter" name="selFilter" id="typeFilter">
-        <option value="filter">Filtrar</option>
-        <option value="director">Por Director</option>
-        <option value="producer">Por Productor</option>
-        <option value="year">Por Año</option>
-      </select>
-    
-      <div class="option_filter" id="select2">
-        <select id="byFilter" style="display: none;"></select>
-      </div>
-  </div>
+    <div class="selectRow">
+      <!-- <select class="selectFilter" name="selFilter" id="typeFilter">
+        
+        <option value="director">By Director</option>
+        <option value="producer">By Producer</option>
+        <option value="year">By Year</option>-->
 
-    <div div class="positionRight">
-      <select class="selectOrder" name="selOrder" id="orderBy">
-        <option value="order">Ordenar por:</option>
-        <option value="alphabet" id="alphabet">Orden Alfabético</option>
-        <option value="year" id="year">Año de Lanzamiento</option>
-        <option value="preference" id="score">Mejor Calificación</option>
+      <select class="filtered" id="director">
+        <option>By Director</option>
+        <option>Hayao Miyazaki</option>
+        <option>Isao Takahata</option>
+        <option>Yoshifumi Kondō</option>
+        <option>Hiroyuki Morita</option>
+        <option>Gorō Miyazaki</option>
+        <option>Hiromasa Yonebayashi</option>
       </select>
+
+      <select class="filtered" id="producer">
+        <option>By Producer</option>
+        <option>Isao Takahata</option>
+        <option>Hayao Miyazaki</option>
+        <option>Toru Hara</option>
+        <option>Toshio Suzuki</option>
+        <option>Yoshiaki Nishimura</option>
+      </select>
+
+
+      <select id="orderBy">
+        <option value="order">Order By:</option>
+        <option value="alphabet" id="alphabet">Alphabetical Order</option>
+        <option value="year" id="year">Release Date</option>
+        <option value="preference" id="score">Best Score</option>
+      </select>
+
+
+      <!--<div class="option_filter" id="select2">
+        <select id="byFilter" style="display: none;"></select>
+      </div>-->
     </div>
   </main>
+
   <div class="container">
     <div id="recover" class="card"></div>
+  </div>
+
+
+
+  <div class="newCard">
+    <div class="description" id="info"></div>
   </div>
 
   <div id="root"></div>
