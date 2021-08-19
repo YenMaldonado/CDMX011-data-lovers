@@ -28,6 +28,7 @@
         <option value="producer">By Producer</option>
         <option value="year">By Year</option>-->
 
+      <label>Filter:</label>
       <select class="filtered" id="director">
         <option>By Director</option>
         <option>Hayao Miyazaki</option>
@@ -48,8 +49,8 @@
       </select>
 
 
+      <label>Order By:</label>
       <select id="orderBy">
-        <option value="order">Order By:</option>
         <option value="alphabet" id="alphabet">Alphabetical Order</option>
         <option value="year" id="year">Release Date</option>
         <option value="preference" id="score">Best Score</option>
@@ -71,8 +72,12 @@
   <div class="newCard">
     <div class="description" id="info"></div>
   </div>
-
-  <div id="root"></div>
+  <footer id="foot">
+    <div class="footContent">
+      <p id="legal"></p>
+    </div>
+  </footer>
+  <!--<div id="root"></div>-->
   <script async src="main.js" type="module"></script>
 </body>
 
