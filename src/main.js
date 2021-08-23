@@ -3,34 +3,31 @@ import moduleData from './data.js';
 import data from './data/ghibli/ghibli.js';
 
 
-window.addEventListener("load", function (e) {
+window.addEventListener("load", function () {
 
     //Imprimir data en html
     const showData = document.getElementById("recover");
-    const showOptions = document.getElementById("byFilter");
-    let showFilter = document.getElementsByClassName("filtered");
     let printData = "";
-    let printFilter ="";
     showCards(data.films);
 
-    document.querySelector('#orderBy').addEventListener('change',(event) => {
-       event.target.value;
-       let printOrder = moduleData.orderCards(event.target.value, data);
-       showCards(printOrder);
+    document.querySelector('#orderBy').addEventListener('change', (event) => {
+        event.target.value;
+        let printOrder = moduleData.orderCards(event.target.value, data);
+        showCards(printOrder);
     });
 
     //Función de filtrado
     document.querySelector("#director").addEventListener('change', (event) => {
-        console.log(event.target.value);
+        // console.log(event.target.value);
         let printFilter = moduleData.selectFilter(event.target.value, data, "director");
         showCards(printFilter);
-    }); 
+    });
     document.querySelector("#producer").addEventListener('change', (event) => {
-        console.log(event.target.value);
+        //console.log(event.target.value);
         let printFilter = moduleData.selectFilter(event.target.value, data, "producer");
         showCards(printFilter);
-    }); 
-    
+    });
+
     //funcion de Ordenamiento
     function showCards(infoCards) {
         showData.innerHTML = "";
@@ -42,7 +39,7 @@ window.addEventListener("load", function (e) {
     }
     let elemCards = document.querySelector(".cards");
     if (elemCards !== null);
-     
+
     function recoverData(cardDetails, templateType) {
         if (templateType === "cards") {
             printData = `
@@ -56,6 +53,7 @@ window.addEventListener("load", function (e) {
             </div>`;
 
         } else {
+            document.getElementById("cards").innerHTML = printData;
             printData = `
             <div class="details">
                 <img src="${cardDetails.poster}"/>
@@ -63,21 +61,28 @@ window.addEventListener("load", function (e) {
                 <p>Año de Lanzamiento: ${cardDetails.release_date}</p>
                 <p>Calificación: ${cardDetails.rt_score}</p>
                 <p>${cardDetails.description}</p>
-            </div>`;  
+                <h5>DATOS ADICIONALES</h5>
+                <h7>People</h7>
+                <h7>Vehicles</h7>
+                <h7>Locations</h7>
+            </div>`;
         }
         return printData;
     }
+    //render(recoverData);
 
     let selectFilm = document.querySelectorAll(".cards");
 
-    for (let i=0; i < selectFilm.length; i++){
-        selectFilm[i].addEventListener("click", function (){
-            let idData = selectFilm[i].getAttribute("id");
+    for (let i = 0; i < selectFilm.length; i++) {
+        selectFilm[i].addEventListener("click", function () {
+            /* let idData = selectFilm[i].getAttribute("id");
             let findMovie = data.films.find((movie) => {
                 //console.log(movie); 
                 return movie.id === idData;              
             }); 
-            console.log(findMovie);
-        });       
-    }; 
-});    
+           // console.log(findMovie);
+        });       */
+        })
+    }
+}
+);

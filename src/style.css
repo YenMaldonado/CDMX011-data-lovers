@@ -21,7 +21,7 @@ h1{
     color: rgba(209, 203, 211, 1);
 }
 
-div > h7{
+div h7{
     font-family: "Yatra One", bold;
     font-size: 14;
     text-align: center;
@@ -94,6 +94,14 @@ main{
     box-shadow: 0 0 40px -10px rgba(0,0,0,0.25) ;
 }
 
+.footContent{
+    position: static;
+    display: -webkit-inline-flex;
+    justify-content: space-between;
+    flex-direction: row;
+    flex-flow: wrap;
+}
+
 @media screen and (max-width:1000px) {
     .cards{
         width: 40%;
@@ -115,3 +123,32 @@ main{
     }
 }
 
+.rsImages{
+    width: 40%;
+    place-content: space-between;
+
+}
+
+footer{
+    margin-bottom: 1%;
+    margin-top: 5%;
+    border: 1.5px;
+    background-color: rgba(196, 196, 196, 1);
+    display: flex;
+    justify-content: space-between;
+}
+
+div h5{
+    margin-left: 50%;
+    font-size: 18px;
+    text-align: center;
+    display: inline-block;
+}
+
+
+#legal{
+    margin-right: 80%;
+    height: 20%;
+    font-size: 14px;
+    text-align: center;
+}
