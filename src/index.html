@@ -14,23 +14,12 @@
       <h1> Ghiblies.com</h1>
     </div>
 
-    <div class="cont">
-      <label>Search</label>
-        <input type="search" placeholder="Title, people, year...">
-    </div>
-  </nav>
+    <div id="tableChart"></div>
 
-  <main>
     <div class="selectRow" id="principal">
-      <!-- <select class="selectFilter" name="selFilter" id="typeFilter">
-        
-        <option value="director">By Director</option>
-        <option value="producer">By Producer</option>
-        <option value="year">By Year</option>-->
-
-      <label>Filter:</label>
+     
       <select class="filtered" id="director">
-        <option>By Director</option>
+        <option>Filter By Director</option>
         <option>Hayao Miyazaki</option>
         <option>Isao Takahata</option>
         <option>Yoshifumi Kondō</option>
@@ -40,7 +29,7 @@
       </select>
 
       <select class="filtered" id="producer">
-        <option>By Producer</option>
+        <option>Filter By Producer</option>
         <option>Isao Takahata</option>
         <option>Hayao Miyazaki</option>
         <option>Toru Hara</option>
@@ -48,31 +37,25 @@
         <option>Yoshiaki Nishimura</option>
       </select>
 
-
-      <label>Order By:</label>
       <select id="orderBy">
         <option value="alphabet" id="alphabet">Alphabetical Order</option>
         <option value="year" id="year">Release Date</option>
         <option value="preference" id="score">Best Score</option>
       </select>
 
-
-      <!--<div class="option_filter" id="select2">
-        <select id="byFilter" style="display: none;"></select>
-      </div>-->
     </div>
-  </main>
+  </nav>
+
+  <main></main>
 
   <div class="container">
     <div id="recover" class="card"></div>
   </div>
 
-
-
   <div class="newCard">
     <div class="description" id="info"></div>
-    <h4>Regresar</h4>
   </div>
+
   <footer id="foot">
     <div class="footContent">
       <p class="footContent" id="legal">Ghiblies.com no tiene los derechos de las imágenes que aquí se comparten,  dichas imágenes son obtenidas de la web</p>

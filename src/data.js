@@ -46,6 +46,5 @@ const moduleData = {
     }
     return arrFilter; 
   }
-};
-  
+}; 
 export default moduleData;

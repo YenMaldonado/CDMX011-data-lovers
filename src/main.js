@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import moduleData from './data.js';
 
 import data from './data/ghibli/ghibli.js';
@@ -7,7 +8,6 @@ window.addEventListener("load", function () {
 
     //Imprimir data en html
     const showData = document.getElementById("recover");
-    let printData = "";
     showCards(data.films);
 
     document.querySelector('#orderBy').addEventListener('change', (event) => {
@@ -16,19 +16,32 @@ window.addEventListener("load", function () {
         showCards(printOrder);
     });
 
-    //Función de filtrado
+    //Evento de filtrado
     document.querySelector("#director").addEventListener('change', (event) => {
         // console.log(event.target.value);
         let printFilter = moduleData.selectFilter(event.target.value, data, "director");
         showCards(printFilter);
     });
+    //Evento de ordenado
     document.querySelector("#producer").addEventListener('change', (event) => {
         //console.log(event.target.value);
         let printFilter = moduleData.selectFilter(event.target.value, data, "producer");
         showCards(printFilter);
     });
 
-    //funcion de Ordenamiento
+    //Función de filtrado
+    let selectFilm = document.querySelectorAll(".cards");
+    for (let i = 0; i < selectFilm.length; i++) {
+        selectFilm[i].addEventListener("click", function () {
+            let idData = selectFilm[i].getAttribute("id");
+            let findMovie = data.films.find((movie) => {
+                return movie.id === idData;
+            });
+           //console.log(findMovie);
+        });
+    }
+
+    //funcion de Ordenado
     function showCards(infoCards) {
         showData.innerHTML = "";
         infoCards.forEach(viewData => {
@@ -37,12 +50,12 @@ window.addEventListener("load", function () {
             showData.appendChild(card);
         });
     }
-    let elemCards = document.querySelector(".cards");
-    if (elemCards !== null);
 
     function recoverData(cardDetails, templateType) {
-        if (templateType === "cards") {
-            printData = `
+        let printData = "";
+        switch (templateType) {
+            case "cards":
+                printData = `
             <div class="row"> 
                  <div class="cards" id="${cardDetails.id}"> 
                     <img src="${cardDetails.poster}" height= "220px"; width= "160px;"/>
@@ -51,10 +64,10 @@ window.addEventListener("load", function () {
                     <p>Score: ${cardDetails.rt_score}</p> -->         
                 </div>
             </div>`;
+                return printData;
 
-        } else {
-            document.getElementById("cards").innerHTML = printData;
-            printData = `
+            case "details":
+                printData = `
             <div class="details">
                 <img src="${cardDetails.poster}"/>
                 <p>${cardDetails.title}</p>
@@ -66,23 +79,46 @@ window.addEventListener("load", function () {
                 <h7>Vehicles</h7>
                 <h7>Locations</h7>
             </div>`;
+                return printData;
         }
-        return printData;
     }
-    //render(recoverData);
 
-    let selectFilm = document.querySelectorAll(".cards");
+    //Función para mostrar dato estadístico
+    function showStatistics(dataHumans) {
+        let humans = 0;
+        let another = 0;
+        let chart;
+        document.createElement("tableChart");
+        dataHumans.films.forEach(movies => {
+            movies.people.forEach(species => {
+                if (species.specie === "Human") {
+                    humans++;
+                } else {
+                    another++;
+                }
+            });
+        });
+        let totalSpecies = humans + another;
+        //console.log(totalSpecies);
+        let percentHuman = parseInt(humans / totalSpecies * 100);
+        //console.log(percentHuman);
+        let percentAnother = parseInt(another / totalSpecies * 100);
+        //console.log(percentAnother);
+        chart = `<div id = "indicators">
+            <table>
+                <tr>
+                    <th>HUMAN SPECIES</th>
+                    <th>ANOTHER SPECIES</th>
+                </tr>
 
-    for (let i = 0; i < selectFilm.length; i++) {
-        selectFilm[i].addEventListener("click", function () {
-            /* let idData = selectFilm[i].getAttribute("id");
-            let findMovie = data.films.find((movie) => {
-                //console.log(movie); 
-                return movie.id === idData;              
-            }); 
-           // console.log(findMovie);
-        });       */
-        })
+                <tr>
+                    <td>${percentHuman}%</td>
+                    <td>${percentAnother}%</td>
+                </tr>
+            </table>
+        </div>`;
+        document.getElementById("tableChart").innerHTML = chart;
     }
-}
-);
+    //console.log(showStatistics(data));
+
+});

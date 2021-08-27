@@ -3,7 +3,7 @@ import moduleData from '../src/data.js';
 
 describe('bloque de test para filtros', () => {
   it('test para filtrado por productor', () => {
- expect(moduleData.selectFilter("Hayao Miyazaki", data, "producer")).toHaveLength(2);
+ expect(moduleData.selectFilter("Hayao Miyazaki", data, "producer")).toHaveLength(4);
   });
 
   it('test para filtrado por director', () => {
