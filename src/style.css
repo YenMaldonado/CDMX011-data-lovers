@@ -102,6 +102,7 @@ main{
 }
 
 .footContent{
+    align-items: center; 
     position: static;
     display: -webkit-inline-flex;
     justify-content: space-between;
