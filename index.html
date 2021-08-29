@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ghiblies/DataLovers</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <nav>
+    <div>
+      <h1> Ghiblies.com</h1>
+    </div>
+
+    <div id="tableChart"></div>
+
+    <div class="selectRow" id="principal">
+     
+      <select class="filtered" id="director">
+        <option>Filter By Director</option>
+        <option>Hayao Miyazaki</option>
+        <option>Isao Takahata</option>
+        <option>Yoshifumi Kondō</option>
+        <option>Hiroyuki Morita</option>
+        <option>Gorō Miyazaki</option>
+        <option>Hiromasa Yonebayashi</option>
+      </select>
+
+      <select class="filtered" id="producer">
+        <option>Filter By Producer</option>
+        <option>Isao Takahata</option>
+        <option>Hayao Miyazaki</option>
+        <option>Toru Hara</option>
+        <option>Toshio Suzuki</option>
+        <option>Yoshiaki Nishimura</option>
+      </select>
+
+      <select id="orderBy">
+        <option value="alphabet" id="alphabet">Alphabetical Order</option>
+        <option value="year" id="year">Release Date</option>
+        <option value="preference" id="score">Best Score</option>
+      </select>
+
+    </div>
+  </nav>
+
+  <main></main>
+
+  <div class="container">
+    <div id="recover" class="card"></div>
+  </div>
+
+  <div class="newCard">
+    <div class="description" id="info"></div>
+  </div>
+
+  <footer id="foot">
+    <div class="footContent">
+      <p class="footContent" id="legal">Ghiblies.com no tiene los derechos de las imágenes que aquí se comparten,  dichas imágenes son obtenidas de la web</p>
+      <h5 id="follow" >Sigue nuestras redes sociales</h5>
+      <div class="footContent" id="rsImages">
+        <img src="images/021-pinterest.png" alt="021-pinterest" width="30px" height="30px">
+        <img src="images/029-instagram.png" alt="029-instagram" width="30px" height="30px">
+        <img src="images/036-facebook.png" alt="036-facebook" width="30px" height="30px">
+      </div>
+    </div>
+  </footer>
+  <!--<div id="root"></div>-->
+  <script async src="main.js" type="module"></script>
+</body>
+
+</html>
